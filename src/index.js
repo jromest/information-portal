@@ -1,12 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import "normalize.css";
-import "./styles/reset.css";
-import "./styles/box-sizing.css";
-import "./styles/shared.module.css";
-
-import "./styles/html.module.css";
+import "./styles/main.scss";
 
 // import "./index.css";
 
