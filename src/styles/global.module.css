@@ -1,0 +1,10 @@
+/* Fonts */
+@value base-font-size: 16px;
+@value base-line-height: 24px;
+
+/* Colors */
+
+@value base-text-color: #333;
+@value base-background-color: #fff;
+/* Sizes */
+@value base-spacing-unit: base-line-height;
