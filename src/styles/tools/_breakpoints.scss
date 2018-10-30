@@ -5,7 +5,7 @@
   */
 
 @mixin bp-small {
-  @media (min-width: $bp-small) {
+  @media (max-width: $bp-small) {
     @content;
   }
 }
