@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import { siteMetaData } from "./app-config";
+import { siteMetadata } from "./app-config";
 import Header from "./components/Header";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Header title={siteMetaData.title} />
+        <Header title={siteMetadata.title} />
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
