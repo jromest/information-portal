@@ -1,6 +1,8 @@
 import React from "react";
 import Post from "./Post";
 
+import style from "../styles/components/post-list.module.scss";
+
 const samplePosts = [
   {
     id: 1,
@@ -32,7 +34,7 @@ class PostList extends React.Component {
   render() {
     const { posts } = this.state;
     return (
-      <div>
+      <div className={style.container}>
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (

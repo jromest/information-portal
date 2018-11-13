@@ -1,0 +1,9 @@
+/* Post Component Style */
+
+@import "../main";
+
+.container {
+  @include container;
+  padding: 50px;
+  border: 1px solid #aaaaaa;
+}

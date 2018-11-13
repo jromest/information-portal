@@ -1,9 +1,10 @@
 import React from "react";
+import style from "../styles/components/post.module.scss";
 
 const Post = ({ post }) => {
   const { message, name, date, likes, comments } = post;
   return (
-    <div>
+    <div className={style.container}>
       <h2>{message}</h2>
       <h6>{name}</h6>
       <p>{date}</p>
