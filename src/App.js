@@ -4,12 +4,14 @@ import "./App.css";
 
 import { siteMetadata } from "./app-config";
 import Header from "./components/Header";
+import PostList from "./components/PostList";
 
 class App extends Component {
   render() {
     return (
       <div>
         <Header title={siteMetadata.title} />
+        <PostList />
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
