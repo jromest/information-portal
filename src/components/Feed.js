@@ -1,8 +1,6 @@
 import React from "react";
 import Post from "./Post";
 
-import style from "../styles/components/feed.module.scss";
-
 const samplePosts = [
   {
     id: 1,
@@ -34,7 +32,7 @@ class Feed extends React.Component {
   render() {
     const { posts } = this.state;
     return (
-      <div className={style.container}>
+      <div className="o-container feed-container">
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (
