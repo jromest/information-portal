@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "./Post";
 
-import style from "../styles/components/post-list.module.scss";
+import style from "../styles/components/feed.module.scss";
 
 const samplePosts = [
   {
@@ -22,7 +22,7 @@ const samplePosts = [
   }
 ];
 
-class PostList extends React.Component {
+class Feed extends React.Component {
   state = {
     posts: []
   };
@@ -45,4 +45,4 @@ class PostList extends React.Component {
   }
 }
 
-export default PostList;
+export default Feed;
