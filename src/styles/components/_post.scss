@@ -2,5 +2,18 @@
 
 .post-container {
   padding: 50px;
-  border: 1px solid #aaaaaa;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+
+  &:first-child {
+    border-radius: 10px 10px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 10px 10px;
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
 }
