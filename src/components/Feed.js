@@ -17,6 +17,15 @@ const samplePosts = [
     date: "November 14, 2018",
     likes: 5,
     comments: []
+  },
+  {
+    id: 3,
+    message:
+      "Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated. It may be used to display a sample of fonts, generate text for testing, or to spoof an e-mail spam filter. The process of using filler text is sometimes called greeking, although the text itself may be nonsense, or largely Latin, as in Lorem ipsum.",
+    name: "Admin",
+    date: "November 16, 2018",
+    likes: 15,
+    comments: []
   }
 ];
 
