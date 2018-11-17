@@ -25,7 +25,7 @@ const samplePosts = [
     name: "Admin",
     date: "November 16, 2018",
     likes: 15,
-    comments: []
+    comments: ["Ayus", "Nice"]
   }
 ];
 

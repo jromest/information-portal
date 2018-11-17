@@ -13,11 +13,7 @@ const Post = ({ post }) => {
       <div className="o-flex actions">
         <div className="likes">{likes} likes</div>
         <div className="comments">
-          {comments.length === 0 ? (
-            <span>0 comments</span>
-          ) : (
-            comments.map((comment, index) => <span key={index}>{comment}</span>)
-          )}
+          <span>{comments.length} comments</span>
         </div>
       </div>
     </div>
