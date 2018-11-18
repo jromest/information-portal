@@ -16,7 +16,8 @@ const Post = props => {
       <div className="o-flex actions">
         <div className="likes">
           <button onClick={handleLikeClick}>{likes}</button>
-          likes
+          like
+          {likes === 1 ? "" : "s"}
         </div>
         <div className="comments">
           <span>{comments.length} comments</span>
