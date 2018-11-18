@@ -1,7 +1,10 @@
 import React from "react";
 
-const Post = ({ post }) => {
-  const { message, name, date, likes, comments } = post;
+const Post = props => {
+  const {
+    post: { message, name, date, likes, comments },
+    handleLikeClick
+  } = props;
   return (
     <div className="o-container o-flex o-flex--column post-container">
       <div className="o-flex user">
@@ -11,7 +14,10 @@ const Post = ({ post }) => {
       <div className="message">{message}</div>
 
       <div className="o-flex actions">
-        <div className="likes">{likes} likes</div>
+        <div className="likes">
+          <button onClick={handleLikeClick}>{likes}</button>
+          likes
+        </div>
         <div className="comments">
           <span>{comments.length} comments</span>
         </div>

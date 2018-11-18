@@ -38,6 +38,19 @@ class Feed extends React.Component {
     this.setState({ posts: samplePosts });
   }
 
+  updateItem = (id, itemAttributes) => {
+    var index = this.state.posts.findIndex(x => x.id === id);
+    if (index === -1) console.log("Invalid");
+    else
+      this.setState({
+        posts: [
+          ...this.state.posts.slice(0, index),
+          Object.assign({}, this.state.posts[index], itemAttributes),
+          ...this.state.posts.slice(index + 1)
+        ]
+      });
+  };
+
   render() {
     const { posts } = this.state;
     return (
@@ -45,7 +58,15 @@ class Feed extends React.Component {
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (
-          posts.map(post => <Post key={post.id} post={post} />)
+          posts.map(post => (
+            <Post
+              key={post.id}
+              post={post}
+              handleLikeClick={() => {
+                this.updateItem(post.id, { likes: post.likes + 1 });
+              }}
+            />
+          ))
         )}
       </div>
     );
