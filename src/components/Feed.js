@@ -1,5 +1,6 @@
 import React from "react";
 import Post from "./Post";
+import Comment from "./Comment";
 
 const samplePosts = [
   {
@@ -71,14 +72,26 @@ class Feed extends React.Component {
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (
-          posts.map(post => (
-            <Post
-              key={post.id}
-              post={post}
-              handleLikeClick={() => {
-                this.updateItem(post.id, { likes: post.likes + 1 });
-              }}
-            />
+          posts.map((post, index) => (
+            <React.Fragment key={index}>
+              <Post
+                key={post.id}
+                post={post}
+                handleLikeClick={() => {
+                  this.updateItem(post.id, { likes: post.likes + 1 });
+                }}
+              />
+              {post.comments.length === 0
+                ? ""
+                : post.comments.map(({ id, name, date, comment }) => (
+                    <Comment
+                      key={id}
+                      name={name}
+                      date={date}
+                      comment={comment}
+                    />
+                  ))}
+            </React.Fragment>
           ))
         )}
       </div>

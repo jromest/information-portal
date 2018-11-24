@@ -19,7 +19,7 @@ const Post = props => {
           like
           {likes === 1 ? "" : "s"}
         </div>
-        <div className="comments">
+        <div className="comments" onClick={() => console.log("OK")}>
           <span>{comments.length} comments</span>
         </div>
       </div>
