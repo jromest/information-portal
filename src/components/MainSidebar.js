@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as HomeSVG } from "../assets/home.svg";
 import { ReactComponent as FileTextSVG } from "../assets/file-text.svg";
 
-import "../styles/components/main-sidebar.scss";
+import "../styles/components/_main-sidebar.scss";
 
 class MainSidebar extends React.Component {
   render() {
