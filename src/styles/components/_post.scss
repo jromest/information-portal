@@ -46,6 +46,25 @@
       .number {
         margin-left: 5px;
       }
+
+      .pulse {
+        animation-name: pulse;
+        animation-duration: 0.25s;
+      }
     }
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  to {
+    transform: scale(1);
   }
 }
