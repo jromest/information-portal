@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactComponent as ThumbsUpSVG } from "../assets/thumbs-up.svg";
 
 const Post = props => {
   const {
@@ -14,10 +15,13 @@ const Post = props => {
       <div className="message">{message}</div>
 
       <div className="o-flex actions">
-        <div className="likes">
-          <button onClick={handleLikeClick}>{likes}</button>
-          like
-          {likes === 1 ? "" : "s"}
+        <div className="o-flex o-flex--space-between likes">
+          <ThumbsUpSVG
+            onClick={handleLikeClick}
+            fill={likes === 0 ? "none" : "#3b5998"}
+            stroke={likes === 0 ? "currentColor" : "#6d84b4"}
+          />
+          <span className="number">{likes}</span>
         </div>
         <div className="comments" onClick={() => console.log("OK")}>
           <span>{comments.length} comments</span>

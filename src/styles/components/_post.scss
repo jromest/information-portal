@@ -41,7 +41,11 @@
     font-size: 0.95em;
 
     .likes {
-      margin-right: 0.75em;
+      margin-right: 2em;
+
+      .number {
+        margin-left: 5px;
+      }
     }
   }
 }
