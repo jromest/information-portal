@@ -9,7 +9,7 @@ class MainSidebar extends React.Component {
         <main className="sidebar-body">
           <ul className="o-list-bare">
             <li>
-              <a href="#" className="active">
+              <a href="" className="active">
                 <HomeSVG />
                 <span>Home</span>
               </a>
@@ -19,9 +19,9 @@ class MainSidebar extends React.Component {
           <ul className="o-list-bare">
             <header className="sidebar-title">Forms</header>
             <li>
-              <a href="#">
+              <a href="">
                 <FileTextSVG />
-                <span>Grades</span>
+                <span>Request Grades</span>
               </a>
             </li>
           </ul>
