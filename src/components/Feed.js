@@ -66,11 +66,16 @@ class Feed extends React.Component {
       });
   };
 
+  handleTextareaChange = name => event =>
+    this.setState({
+      [name]: event.target.value
+    });
+
   render() {
     const { posts } = this.state;
     return (
       <div className="o-container feed-container">
-        <AddPost />
+        <AddPost onChange={this.handleTextareaChange("newPost")} />
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (
