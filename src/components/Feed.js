@@ -1,6 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import Comment from "./Comment";
+import AddPost from "./AddPost";
 
 const samplePosts = [
   {
@@ -69,6 +70,7 @@ class Feed extends React.Component {
     const { posts } = this.state;
     return (
       <div className="o-container feed-container">
+        <AddPost />
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (
