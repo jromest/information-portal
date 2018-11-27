@@ -71,11 +71,29 @@ class Feed extends React.Component {
       [name]: event.target.value
     });
 
+  handleAddClick = () =>
+    this.state.newPost &&
+    this.setState(prevState => {
+      const posts = prevState.posts.slice();
+      posts.push({
+        id: Math.random(),
+        name: "Admin",
+        message: prevState.newPost,
+        date: Date(),
+        likes: 0,
+        comments: []
+      });
+      return { posts };
+    });
+
   render() {
     const { posts } = this.state;
     return (
       <div className="o-container feed-container">
-        <AddPost onChange={this.handleTextareaChange("newPost")} />
+        <AddPost
+          onChange={this.handleTextareaChange("newPost")}
+          onClick={this.handleAddClick}
+        />
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (
