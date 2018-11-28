@@ -93,6 +93,7 @@ class Feed extends React.Component {
         <AddPost
           onChange={this.handleTextareaChange("newPost")}
           onClick={this.handleAddClick}
+          hasNoPost={!this.state.newPost}
         />
         {posts.length === 0 ? (
           <p>Loading...</p>
