@@ -71,20 +71,21 @@ class Feed extends React.Component {
       [name]: event.target.value
     });
 
-  handleAddClick = () =>
-    this.state.newPost &&
-    this.setState(prevState => {
-      const posts = prevState.posts.slice();
-      posts.push({
-        id: Math.random(),
-        name: "Admin",
-        message: prevState.newPost,
-        date: Date(),
-        likes: 0,
-        comments: []
-      });
-      return { posts };
+  handleAddPostClick = () => {
+    const { posts, newPost } = this.state;
+    posts.push({
+      id: Math.random(),
+      name: "Admin",
+      message: newPost,
+      date: Date(),
+      likes: 0,
+      comments: []
     });
+    this.setState({
+      posts,
+      newPost: ""
+    });
+  };
 
   render() {
     const { posts } = this.state;
@@ -92,7 +93,7 @@ class Feed extends React.Component {
       <div className="o-container feed-container">
         <AddPost
           onChange={this.handleTextareaChange("newPost")}
-          onClick={this.handleAddClick}
+          onClick={this.handleAddPostClick}
           hasNoPost={!this.state.newPost}
         />
         {posts.length === 0 ? (
