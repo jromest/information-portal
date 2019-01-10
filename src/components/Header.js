@@ -11,7 +11,9 @@ const Header = props => (
       </div>
       <nav className="o-list-bare">
         <li className="header-nav-item">
-          <Link to="login">Login</Link>
+          <Link to="login" className="btn btn-secondary">
+            Login
+          </Link>
         </li>
       </nav>
     </div>
