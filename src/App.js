@@ -19,7 +19,7 @@ class App extends Component {
         <Router>
           <Home path="/">
             <Feed path="/" />
-            <PostPage path="post" />
+            <PostPage path="post/:postId" />
           </Home>
           <Login path="login" />
           <NotFound default />
