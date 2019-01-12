@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "@reach/router";
 import { ReactComponent as ThumbsUpSVG } from "../assets/thumbs-up.svg";
 
 class Post extends React.Component {
   state = {
-    animation: false
+    animation: false,
+    isFeed: this.props.isFeed
   };
 
   componentDidMount() {
@@ -22,17 +24,19 @@ class Post extends React.Component {
 
   render() {
     const {
-      post: { message, name, date, likes, comments },
+      post: { id, message, name, date, likes, comments },
       handleLikeClick
     } = this.props;
-    const { animation } = this.state;
+    const { animation, isFeed } = this.state;
     return (
       <div className="o-container o-flex o-flex--column post-container">
-        <div className="o-flex user">
-          <div className="name">{name}</div>
-          <div className="date">{date}</div>
-        </div>
-        <div className="message">{message}</div>
+        {isFeed ? (
+          <Link to={`post/${id}`} className="link">
+            <PostContent content={{ name, date, message }} />
+          </Link>
+        ) : (
+          <PostContent content={{ name, date, message }} />
+        )}
 
         <div className="o-flex actions">
           <div className="o-flex o-flex--space-between likes">
@@ -49,13 +53,34 @@ class Post extends React.Component {
             </div>
             <span className="number">{likes}</span>
           </div>
-          <div className="comments" onClick={() => console.log("OK")}>
-            <span>{comments.length} comments</span>
-          </div>
+
+          {isFeed ? (
+            <Link to={`post/${id}`} className="link">
+              <PostComment commentCount={comments.length} />
+            </Link>
+          ) : (
+            <PostComment commentCount={comments.length} />
+          )}
         </div>
       </div>
     );
   }
 }
+
+const PostContent = ({ content }) => (
+  <React.Fragment>
+    <div className="o-flex user">
+      <div className="name">{content.name}</div>
+      <div className="date">{content.date}</div>
+    </div>
+    <div className="message">{content.message}</div>
+  </React.Fragment>
+);
+
+const PostComment = ({ commentCount }) => (
+  <div className="comments">{`${commentCount} comment${
+    commentCount === 1 ? "" : "s"
+  }`}</div>
+);
 
 export default Post;

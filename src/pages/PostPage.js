@@ -1,6 +1,7 @@
 import React from "react";
-import Post from "./Post";
-import AddPost from "./AddPost";
+import Post from "../components/Post";
+import Comment from "../components/Comment";
+import AddPost from "../components/AddPost";
 
 const samplePosts = [
   {
@@ -43,26 +44,22 @@ const samplePosts = [
   }
 ];
 
-class Feed extends React.Component {
+class PostPage extends React.Component {
   state = {
-    posts: []
+    post: null
   };
 
   componentDidMount() {
-    this.setState({ posts: samplePosts });
+    const { postId } = this.props;
+    this.setState({
+      post: samplePosts.find(i => i.id.toString() === postId)
+    });
   }
 
-  updateItem = (id, itemAttributes) => {
-    var index = this.state.posts.findIndex(x => x.id === id);
-    if (index === -1) console.log("Invalid");
-    else
-      this.setState({
-        posts: [
-          ...this.state.posts.slice(0, index),
-          Object.assign({}, this.state.posts[index], itemAttributes),
-          ...this.state.posts.slice(index + 1)
-        ]
-      });
+  updateLike = () => {
+    const { post } = this.state;
+    post.likes = post.likes + 1;
+    this.setState({ post });
   };
 
   handleTextareaChange = name => event =>
@@ -71,48 +68,50 @@ class Feed extends React.Component {
     });
 
   handleAddPostClick = () => {
-    const { posts, newPost } = this.state;
-    posts.unshift({
+    const { post, newComment } = this.state;
+    post.comments.unshift({
       id: Math.random(),
       name: "Admin",
-      message: newPost,
       date: Date(),
-      likes: 0,
-      comments: []
+      comment: newComment
     });
     this.setState({
-      posts,
-      newPost: ""
+      post,
+      newComment: ""
     });
   };
 
   render() {
-    const { posts } = this.state;
+    const { post } = this.state;
     return (
       <div className="o-container feed-container">
-        <AddPost
-          onChange={this.handleTextareaChange("newPost")}
-          onClick={this.handleAddPostClick}
-          hasNoPost={!this.state.newPost}
-          newPost={this.state.newPost}
-        />
-        {posts.length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          posts.map(post => (
+        {post ? (
+          <React.Fragment>
             <Post
-              key={post.id}
               post={post}
               handleLikeClick={() => {
-                this.updateItem(post.id, { likes: post.likes + 1 });
+                this.updateLike();
               }}
-              isFeed={true}
             />
-          ))
+            {post.comments.length === 0
+              ? ""
+              : post.comments.map(({ id, name, date, comment }) => (
+                  <Comment key={id} name={name} date={date} comment={comment} />
+                ))}
+          </React.Fragment>
+        ) : (
+          "Loading..."
         )}
+        <AddPost
+          onChange={this.handleTextareaChange("newComment")}
+          onClick={this.handleAddPostClick}
+          hasNoPost={!this.state.newComment}
+          newPost={this.state.newComment}
+          inComments={true}
+        />
       </div>
     );
   }
 }
 
-export default Feed;
+export default PostPage;
