@@ -24,6 +24,7 @@ class App extends Component {
             <PostPage path="post/:postId" />
             <Users path="users" />
             <AddEditUser path="add-edit" />
+            <AddEditUser path="add-edit/:userId" />
           </Home>
           <Login path="login" />
           <NotFound default />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 import { ReactComponent as EditSVG } from "../assets/edit.svg";
 import { ReactComponent as TrashSVG } from "../assets/trash-2.svg";
 
@@ -52,7 +53,9 @@ class User extends React.Component {
                 )}
 
                 <th className="u-text-right">
-                  <button className="btn btn-primary">Add User</button>
+                  <Link to="/add-edit">
+                    <button className="btn btn-primary">Add User</button>
+                  </Link>
                 </th>
               </tr>
             </thead>
@@ -63,8 +66,16 @@ class User extends React.Component {
                   <td>{user.name}</td>
                   <td>{user.type}</td>
                   <td className="users-table--actions">
-                    <EditSVG />
-                    <TrashSVG onClick={() => this.removeUser(user)} />
+                    <Link
+                      to={`/add-edit/${user.accountId}`}
+                      className="users-table--actions-edit"
+                    >
+                      <EditSVG />
+                    </Link>
+                    <TrashSVG
+                      onClick={() => this.removeUser(user)}
+                      className="users-table--actions-remove"
+                    />
                   </td>
                 </tr>
               ))}
