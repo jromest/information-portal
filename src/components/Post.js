@@ -35,9 +35,7 @@ class Post extends React.Component {
             <PostContent content={{ name, date, message }} />
           </Link>
         ) : (
-          <React.Fragment>
-            <PostContent content={{ name, date, message }} />
-          </React.Fragment>
+          <PostContent content={{ name, date, message }} />
         )}
 
         <div className="o-flex actions">
@@ -55,9 +53,14 @@ class Post extends React.Component {
             </div>
             <span className="number">{likes}</span>
           </div>
-          <div className="comments" onClick={() => console.log("OK")}>
-            <span>{comments.length} comments</span>
-          </div>
+
+          {isFeed ? (
+            <Link to={`post/${id}`} className="link">
+              <PostComment commentCount={comments.length} />
+            </Link>
+          ) : (
+            <PostComment commentCount={comments.length} />
+          )}
         </div>
       </div>
     );
@@ -72,6 +75,12 @@ const PostContent = ({ content }) => (
     </div>
     <div className="message">{content.message}</div>
   </React.Fragment>
+);
+
+const PostComment = ({ commentCount }) => (
+  <div className="comments">{`${commentCount} comment${
+    commentCount === 1 ? "" : "s"
+  }`}</div>
 );
 
 export default Post;
