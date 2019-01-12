@@ -1,6 +1,5 @@
 import React from "react";
 import Post from "./Post";
-import Comment from "./Comment";
 import AddPost from "./AddPost";
 
 const samplePosts = [
@@ -109,16 +108,6 @@ class Feed extends React.Component {
                   this.updateItem(post.id, { likes: post.likes + 1 });
                 }}
               />
-              {post.comments.length === 0
-                ? ""
-                : post.comments.map(({ id, name, date, comment }) => (
-                    <Comment
-                      key={id}
-                      name={name}
-                      date={date}
-                      comment={comment}
-                    />
-                  ))}
             </React.Fragment>
           ))
         )}
