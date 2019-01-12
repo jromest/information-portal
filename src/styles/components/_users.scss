@@ -31,6 +31,15 @@
     &--actions {
       display: flex;
       justify-content: space-evenly;
+
+      &-edit {
+        color: $base-primary-color;
+      }
+
+      &-remove {
+        color: tomato;
+        cursor: pointer;
+      }
     }
   }
 }

@@ -41,8 +41,30 @@ class AddUser extends React.Component {
 
   handleChange = name => event => {
     const { user } = this.state;
-    user[name] = event.target.value;
-    this.setState({ user });
+    if (name !== "confirmPassword") {
+      user[name] = event.target.value;
+      this.setState({ user });
+    } else {
+      this.setState({ confirmPassword: ([name] = event.target.value) });
+    }
+  };
+
+  handleSave = () => {
+    const { user, confirmPassword } = this.state;
+    if (confirmPassword !== user.password) {
+      alert("Password doesn't match.");
+    } else {
+      sampleUserList.unshift(user);
+      this.setState({
+        user: {
+          type: "user",
+          accountId: "",
+          name: "",
+          password: ""
+        },
+        confirmPassword: ""
+      });
+    }
   };
 
   render() {
@@ -140,7 +162,9 @@ class AddUser extends React.Component {
             />
           </div>
 
-          <button className="btn btn-primary">Save</button>
+          <button className="btn btn-primary" onClick={this.handleSave}>
+            Save
+          </button>
         </div>
       </div>
     );
