@@ -1,6 +1,7 @@
 import React from "react";
 import Post from "../components/Post";
 import Comment from "../components/Comment";
+import AddPost from "../components/AddPost";
 
 const samplePosts = [
   {
@@ -61,6 +62,25 @@ class PostPage extends React.Component {
     this.setState({ post });
   };
 
+  handleTextareaChange = name => event =>
+    this.setState({
+      [name]: event.target.value
+    });
+
+  handleAddPostClick = () => {
+    const { post, newComment } = this.state;
+    post.comments.unshift({
+      id: Math.random(),
+      name: "Admin",
+      date: Date(),
+      comment: newComment
+    });
+    this.setState({
+      post,
+      newComment: ""
+    });
+  };
+
   render() {
     const { post } = this.state;
     return (
@@ -82,6 +102,12 @@ class PostPage extends React.Component {
         ) : (
           "Loading..."
         )}
+        <AddPost
+          onChange={this.handleTextareaChange("newComment")}
+          onClick={this.handleAddPostClick}
+          hasNoPost={!this.state.newComment}
+          newPost={this.state.newComment}
+        />
       </div>
     );
   }
