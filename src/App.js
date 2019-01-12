@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/404";
 import Feed from "./components/Feed";
 import PostPage from "./pages/PostPage";
+import Users from "./pages/Users";
 
 import "./styles/main.scss";
 
@@ -20,6 +21,7 @@ class App extends Component {
           <Home path="/">
             <Feed path="/" />
             <PostPage path="post/:postId" />
+            <Users path="users" />
           </Home>
           <Login path="login" />
           <NotFound default />
