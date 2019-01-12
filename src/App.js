@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NotFound from "./pages/404";
+import Feed from "./components/Feed";
+import PostPage from "./pages/PostPage";
 
 import "./styles/main.scss";
 
@@ -15,7 +17,10 @@ class App extends Component {
       <div>
         <Header title={siteMetadata.title} />
         <Router>
-          <Home path="/" />
+          <Home path="/">
+            <Feed path="/" />
+            <PostPage path="post" />
+          </Home>
           <Login path="login" />
           <NotFound default />
         </Router>

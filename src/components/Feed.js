@@ -99,16 +99,14 @@ class Feed extends React.Component {
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (
-          posts.map((post, index) => (
-            <React.Fragment key={index}>
-              <Post
-                key={post.id}
-                post={post}
-                handleLikeClick={() => {
-                  this.updateItem(post.id, { likes: post.likes + 1 });
-                }}
-              />
-            </React.Fragment>
+          posts.map(post => (
+            <Post
+              key={post.id}
+              post={post}
+              handleLikeClick={() => {
+                this.updateItem(post.id, { likes: post.likes + 1 });
+              }}
+            />
           ))
         )}
       </div>
