@@ -1,0 +1,48 @@
+/* Add/Edit User Page Style */
+
+.add-user-container {
+  padding: 2em 1em;
+  background-color: #fff;
+
+  .add-user-form {
+    width: 50%;
+
+    .text-label {
+      font-size: 0.75em;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #838383;
+    }
+
+    .text-field {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5em;
+      position: relative;
+
+      &-radio {
+        justify-content: flex-start;
+
+        .input-radio {
+          margin-right: 0.5em;
+
+          &-label {
+            margin-right: 2em;
+          }
+        }
+      }
+
+      &-input {
+        padding-left: 10%;
+      }
+
+      &-icon {
+        position: absolute;
+        left: 0;
+        width: 10%;
+        color: $base-text-color;
+      }
+    }
+  }
+}

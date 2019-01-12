@@ -7,6 +7,7 @@ import NotFound from "./pages/404";
 import Feed from "./components/Feed";
 import PostPage from "./pages/PostPage";
 import Users from "./pages/Users";
+import AddEditUser from "./pages/AddEditUser";
 
 import "./styles/main.scss";
 
@@ -22,6 +23,7 @@ class App extends Component {
             <Feed path="/" />
             <PostPage path="post/:postId" />
             <Users path="users" />
+            <AddEditUser path="add-edit" />
           </Home>
           <Login path="login" />
           <NotFound default />
