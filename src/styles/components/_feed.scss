@@ -4,4 +4,9 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 4px 6px 0 #bfbfbf;
+
+  &--post {
+    text-decoration: none;
+    color: inherit;
+  }
 }

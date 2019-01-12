@@ -101,7 +101,11 @@ class Feed extends React.Component {
           <p>Loading...</p>
         ) : (
           posts.map(post => (
-            <Link to={`post/${post.id.toString()}`} key={post.id}>
+            <Link
+              to={`post/${post.id.toString()}`}
+              key={post.id}
+              className="feed-container--post"
+            >
               <Post
                 post={post}
                 handleLikeClick={() => {
