@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@reach/router";
 import Post from "./Post";
 import AddPost from "./AddPost";
 
@@ -101,18 +100,14 @@ class Feed extends React.Component {
           <p>Loading...</p>
         ) : (
           posts.map(post => (
-            <Link
-              to={`post/${post.id.toString()}`}
+            <Post
               key={post.id}
-              className="feed-container--post"
-            >
-              <Post
-                post={post}
-                handleLikeClick={() => {
-                  this.updateItem(post.id, { likes: post.likes + 1 });
-                }}
-              />
-            </Link>
+              post={post}
+              handleLikeClick={() => {
+                this.updateItem(post.id, { likes: post.likes + 1 });
+              }}
+              isFeed={true}
+            />
           ))
         )}
       </div>

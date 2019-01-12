@@ -55,13 +55,24 @@ class PostPage extends React.Component {
     });
   }
 
+  updateLike = () => {
+    const { post } = this.state;
+    post.likes = post.likes + 1;
+    this.setState({ post });
+  };
+
   render() {
     const { post } = this.state;
     return (
       <div className="o-container feed-container">
         {post ? (
           <React.Fragment>
-            <Post post={post} />
+            <Post
+              post={post}
+              handleLikeClick={() => {
+                this.updateLike();
+              }}
+            />
             {post.comments.length === 0
               ? ""
               : post.comments.map(({ id, name, date, comment }) => (
