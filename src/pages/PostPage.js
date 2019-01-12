@@ -107,6 +107,7 @@ class PostPage extends React.Component {
           onClick={this.handleAddPostClick}
           hasNoPost={!this.state.newComment}
           newPost={this.state.newComment}
+          inComments={true}
         />
       </div>
     );
