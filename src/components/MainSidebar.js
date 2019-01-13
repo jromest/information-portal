@@ -5,6 +5,8 @@ import { ReactComponent as FileTextSVG } from "../assets/file-text.svg";
 import { ReactComponent as UsersSVG } from "../assets/users.svg";
 import { ReactComponent as FileSVG } from "../assets/file.svg";
 
+import { UserContextConsumer } from "../context/UserContext";
+
 const NavLink = props => (
   <Link
     {...props}
@@ -53,15 +55,25 @@ class MainSidebar extends React.Component {
           </li>
         </ul>
 
-        <ul className="o-list-bare">
-          <div className="sidebar-title">Manage</div>
-          <li>
-            <NavLink to="users" className="sidebar-item">
-              <UsersSVG />
-              <span className="sidebar-item-title">Users</span>
-            </NavLink>
-          </li>
-        </ul>
+        <UserContextConsumer>
+          {({ loggedUser }) => {
+            if (loggedUser) {
+              if (loggedUser.type === "admin") {
+                return (
+                  <ul className="o-list-bare">
+                    <div className="sidebar-title">Manage</div>
+                    <li>
+                      <NavLink to="users" className="sidebar-item">
+                        <UsersSVG />
+                        <span className="sidebar-item-title">Users</span>
+                      </NavLink>
+                    </li>
+                  </ul>
+                );
+              }
+            }
+          }}
+        </UserContextConsumer>
       </section>
     );
   }
