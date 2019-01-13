@@ -13,13 +13,14 @@ class Login extends React.Component {
 
   handleChange = name => event => this.setState({ [name]: event.target.value });
 
-  handleLogin = users => {
+  handleLogin = (users, callback) => {
     const { accountId, password } = this.state;
-    const logUser = users.filter(
+    const loggedUSer = users.filter(
       user => user.accountId === accountId && user.password === password
     );
 
-    if (logUser.length !== 0) {
+    if (loggedUSer.length !== 0) {
+      callback(loggedUSer[0]);
       navigate("/");
       this.setState({
         accountId: "",
@@ -35,7 +36,7 @@ class Login extends React.Component {
     return (
       <section className="o-container">
         <UserContextConsumer>
-          {({ users }) => (
+          {({ users, onLogin }) => (
             <div className="login-container">
               <h1 className="u-text-center login-container-title">
                 Welcome back!
@@ -72,7 +73,7 @@ class Login extends React.Component {
                 </span>
                 <button
                   className="btn btn-primary"
-                  onClick={() => this.handleLogin(users)}
+                  onClick={() => this.handleLogin(users, onLogin)}
                 >
                   Login
                 </button>

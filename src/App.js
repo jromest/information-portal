@@ -20,8 +20,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header title={siteMetadata.title} />
         <UserContextProvider>
+          <Header title={siteMetadata.title} />
           <Router>
             <Home path="/">
               <Feed path="/" />

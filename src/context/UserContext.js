@@ -21,16 +21,28 @@ export const UserContextConsumer = UserContext.Consumer;
 
 export class UserContextProvider extends React.Component {
   state = {
-    users: []
+    users: [],
+    isLogin: false,
+    loggedUser: null
   };
 
   componentDidMount() {
     this.setState({ users: sampleUserList });
   }
 
+  handleLogin = user => {
+    this.setState(prevState => ({
+      ...prevState,
+      isLogin: true,
+      loggedUser: user
+    }));
+  };
+
   render() {
     return (
-      <UserContext.Provider value={{ users: this.state.users }}>
+      <UserContext.Provider
+        value={{ ...this.state, onLogin: this.handleLogin }}
+      >
         {this.props.children}
       </UserContext.Provider>
     );
