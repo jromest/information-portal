@@ -10,6 +10,8 @@ import Users from "./pages/Users";
 import ManageUser from "./pages/ManageUser";
 import RequestDocument from "./pages/RequestDocument";
 
+import { UserContextProvider } from "./context/UserContext";
+
 import "./styles/main.scss";
 
 import { siteMetadata } from "./app-config";
@@ -19,19 +21,21 @@ class App extends Component {
     return (
       <div>
         <Header title={siteMetadata.title} />
-        <Router>
-          <Home path="/">
-            <Feed path="/" />
-            <PostPage path="post/:postId" />
-            <Users path="users" />
-            <ManageUser path="manage" />
-            <ManageUser path="manage/:userId" />
-            <RequestDocument path="request" />
-            <RequestDocument path="request/:requestId" />
-          </Home>
-          <Login path="login" />
-          <NotFound default />
-        </Router>
+        <UserContextProvider>
+          <Router>
+            <Home path="/">
+              <Feed path="/" />
+              <PostPage path="post/:postId" />
+              <Users path="users" />
+              <ManageUser path="manage" />
+              <ManageUser path="manage/:userId" />
+              <RequestDocument path="request" />
+              <RequestDocument path="request/:requestId" />
+            </Home>
+            <Login path="login" />
+            <NotFound default />
+          </Router>
+        </UserContextProvider>
       </div>
     );
   }
