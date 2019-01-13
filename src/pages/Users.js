@@ -3,42 +3,13 @@ import { Link } from "@reach/router";
 import { ReactComponent as EditSVG } from "../assets/edit.svg";
 import { ReactComponent as TrashSVG } from "../assets/trash-2.svg";
 
-const sampleUserList = [
-  {
-    accountId: "000",
-    password: "12345",
-    name: "Admin",
-    type: "admin"
-  },
-  {
-    accountId: "001",
-    password: "12345",
-    name: "Juan dela Cruz",
-    type: "user"
-  }
-];
+import { UserContextConsumer } from "../context/UserContext";
 
-class User extends React.Component {
-  state = {
-    users: null
-  };
-
-  componentDidMount() {
-    this.setState({ users: sampleUserList });
-  }
-
-  removeUser = user => {
-    const { users } = this.state;
-    users.splice(users.indexOf(user), 1);
-    this.setState({ users });
-  };
-
-  render() {
-    const { users } = this.state;
-
-    return (
-      <div className="o-container feed-container users-container">
-        {users ? (
+const User = () => (
+  <div className="o-container feed-container users-container">
+    <UserContextConsumer>
+      {({ users, onRemove }) =>
+        users ? (
           <table className="users-table">
             <thead className="u-text-left">
               <tr>
@@ -73,7 +44,7 @@ class User extends React.Component {
                       <EditSVG />
                     </Link>
                     <TrashSVG
-                      onClick={() => this.removeUser(user)}
+                      onClick={() => onRemove(user)}
                       className="users-table--actions-remove"
                     />
                   </td>
@@ -83,10 +54,10 @@ class User extends React.Component {
           </table>
         ) : (
           "Loading..."
-        )}
-      </div>
-    );
-  }
-}
+        )
+      }
+    </UserContextConsumer>
+  </div>
+);
 
 export default User;

@@ -38,10 +38,20 @@ export class UserContextProvider extends React.Component {
     }));
   };
 
+  removeUser = user => {
+    const { users } = this.state;
+    users.splice(users.indexOf(user), 1);
+    this.setState({ users });
+  };
+
   render() {
     return (
       <UserContext.Provider
-        value={{ ...this.state, onLogin: this.handleLogin }}
+        value={{
+          ...this.state,
+          onLogin: this.handleLogin,
+          onRemove: this.removeUser
+        }}
       >
         {this.props.children}
       </UserContext.Provider>
