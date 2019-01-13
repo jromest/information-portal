@@ -53,7 +53,7 @@ class User extends React.Component {
                 )}
 
                 <th className="u-text-right">
-                  <Link to="/add-edit">
+                  <Link to="/manage">
                     <button className="btn btn-primary">Add User</button>
                   </Link>
                 </th>
@@ -67,7 +67,7 @@ class User extends React.Component {
                   <td>{user.type}</td>
                   <td className="users-table--actions">
                     <Link
-                      to={`/add-edit/${user.accountId}`}
+                      to={`/manage/${user.accountId}`}
                       className="users-table--actions-edit"
                     >
                       <EditSVG />
