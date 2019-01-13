@@ -8,6 +8,7 @@ import Feed from "./components/Feed";
 import PostPage from "./pages/PostPage";
 import Users from "./pages/Users";
 import ManageUser from "./pages/ManageUser";
+import RequestDocument from "./pages/RequestDocument";
 
 import "./styles/main.scss";
 
@@ -25,6 +26,7 @@ class App extends Component {
             <Users path="users" />
             <ManageUser path="manage" />
             <ManageUser path="manage/:userId" />
+            <RequestDocument path="request" />
           </Home>
           <Login path="login" />
           <NotFound default />

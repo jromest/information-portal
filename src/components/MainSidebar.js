@@ -43,9 +43,11 @@ class MainSidebar extends React.Component {
             <FileTextSVG />
             <span className="sidebar-item-title">Request Grades</span>
           </li>
-          <li className="sidebar-item">
-            <FileSVG />
-            <span className="sidebar-item-title">Request Document</span>
+          <li>
+            <NavLink to="request">
+              <FileSVG />
+              <span className="sidebar-item-title">Request Document</span>
+            </NavLink>
           </li>
         </ul>
 

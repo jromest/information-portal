@@ -1,0 +1,21 @@
+/* Request Document Page Style */
+
+.request-form-container {
+  padding: 2em;
+  background-color: #fff;
+
+  .request-form {
+    width: 50%;
+
+    .text-label {
+      font-size: 0.75em;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #838383;
+    }
+
+    .text-input {
+      margin-bottom: 1.5em;
+    }
+  }
+}
