@@ -2,6 +2,8 @@ import React from "react";
 import Post from "./Post";
 import AddPost from "./AddPost";
 
+import { UserContextConsumer } from "../context/UserContext";
+
 const samplePosts = [
   {
     id: 1,
@@ -90,12 +92,22 @@ class Feed extends React.Component {
     const { posts } = this.state;
     return (
       <div className="o-container feed-container">
-        <AddPost
-          onChange={this.handleTextareaChange("newPost")}
-          onClick={this.handleAddPostClick}
-          hasNoPost={!this.state.newPost}
-          newPost={this.state.newPost}
-        />
+        <UserContextConsumer>
+          {({ loggedUser }) => {
+            if (loggedUser) {
+              if (loggedUser.type === "admin") {
+                return (
+                  <AddPost
+                    onChange={this.handleTextareaChange("newPost")}
+                    onClick={this.handleAddPostClick}
+                    hasNoPost={!this.state.newPost}
+                    newPost={this.state.newPost}
+                  />
+                );
+              }
+            }
+          }}
+        </UserContextConsumer>
         {posts.length === 0 ? (
           <p>Loading...</p>
         ) : (
