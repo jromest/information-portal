@@ -3,6 +3,8 @@ import Post from "../components/Post";
 import Comment from "../components/Comment";
 import AddPost from "../components/AddPost";
 
+import { UserContextConsumer } from "../context/UserContext";
+
 const samplePosts = [
   {
     id: 1,
@@ -102,13 +104,22 @@ class PostPage extends React.Component {
         ) : (
           "Loading..."
         )}
-        <AddPost
-          onChange={this.handleTextareaChange("newComment")}
-          onClick={this.handleAddPostClick}
-          hasNoPost={!this.state.newComment}
-          newPost={this.state.newComment}
-          inComments={true}
-        />
+
+        <UserContextConsumer>
+          {({ isLogin }) => {
+            if (isLogin) {
+              return (
+                <AddPost
+                  onChange={this.handleTextareaChange("newComment")}
+                  onClick={this.handleAddPostClick}
+                  hasNoPost={!this.state.newComment}
+                  newPost={this.state.newComment}
+                  inComments={true}
+                />
+              );
+            }
+          }}
+        </UserContextConsumer>
       </div>
     );
   }
