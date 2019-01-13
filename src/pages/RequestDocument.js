@@ -7,6 +7,13 @@ class RequestDocument extends React.Component {
     reason: ""
   };
 
+  componentDidMount() {
+    const { requestId } = this.state;
+    this.setState(prevState => ({
+      ...prevState,
+      typeOfDocument: requestId === "grades" ? "Report of Grades" : ""
+    }));
+  }
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
   };
@@ -43,7 +50,7 @@ class RequestDocument extends React.Component {
           <input
             type="text"
             className="text-input"
-            id="department"
+            id="dep+artment"
             onChange={this.handleChange("department")}
             value={department}
           />

@@ -27,6 +27,7 @@ class App extends Component {
             <ManageUser path="manage" />
             <ManageUser path="manage/:userId" />
             <RequestDocument path="request" />
+            <RequestDocument path="request/:requestId" />
           </Home>
           <Login path="login" />
           <NotFound default />
