@@ -39,13 +39,17 @@ class MainSidebar extends React.Component {
 
         <ul className="o-list-bare">
           <div className="sidebar-title">Forms</div>
-          <li className="sidebar-item">
-            <FileTextSVG />
-            <span className="sidebar-item-title">Request Grades</span>
+          <li>
+            <NavLink to="request/grades">
+              <FileTextSVG />
+              <span className="sidebar-item-title">Request Grades</span>
+            </NavLink>
           </li>
-          <li className="sidebar-item">
-            <FileSVG />
-            <span className="sidebar-item-title">Request Document</span>
+          <li>
+            <NavLink to="request">
+              <FileSVG />
+              <span className="sidebar-item-title">Request Document</span>
+            </NavLink>
           </li>
         </ul>
 
